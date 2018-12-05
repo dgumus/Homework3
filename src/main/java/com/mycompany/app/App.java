@@ -4,6 +4,7 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.jar.Attributes;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,23 +19,30 @@ import java.io.IOException;
 
 
 public class App {
-    public static ArrayList<String> search(String firstName, String lastName) throws SAXException, IOException, ParserConfigurationException {
+    public static String search(String firstName, String lastName) throws SAXException, IOException, ParserConfigurationException {
     	SAXParserFactory factory = SAXParserFactory.newInstance();
     	SAXParser parser = factory.newSAXParser();
     	App myobj = new App();
     	MyHandler handler = myobj.new MyHandler();
         parser.parse(new File("EEAS.xml"), handler);
-        
-        ArrayList<String> res;
+       
+        ArrayList<String> res=new ArrayList<>();
+        res.toString();
         HashMap<String,ArrayList<String>> hashma = handler.getMyMap();
         if( (!firstName.equals("")) && (!lastName.equals(""))){
-            return hashma.get(firstName+ " " + lastName);
+             res=hashma.get(firstName+ " " + lastName);
+             System.out.print(res.toString());
+             return res.toString();
         }else if((!firstName.equals("")) && lastName.equals("")){
-            return hashma.get(firstName);
+            res= hashma.get(firstName);
+            System.out.print(res.toString());
+            return res.toString();
         }else if( firstName.equals("") && ( !lastName.equals("") )    ){
-            return hashma.get(lastName);
+            res= hashma.get(lastName);
+            System.out.print(res.toString());
+            return res.toString();
         }
-        return new ArrayList<>();
+        return "";
     	
     }
 
@@ -51,6 +59,7 @@ public class App {
         }
     	
     	public void startElement(String uri, String localName, String qName, Attributes attributes)throws SAXException{
+            //qName.equals("
     		if(qName.equals("NAME")) {
     			readName = true;
                 entityid= Integer.parseInt(attributes.getValue("Entity_id"));
@@ -113,12 +122,13 @@ public class App {
 
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
-
+       
         get("/", (req, res) -> "Hello, World");
 
         post("/search", (req, res) -> {
             String input1 = req.queryParams("input1");
             String input2 = req.queryParams("input2");
+            
             ArrayList<String> result= App.search(input1, input2);
 
             Map map = new HashMap();
