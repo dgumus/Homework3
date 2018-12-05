@@ -28,21 +28,21 @@ public class App {
                     Element myElm = (Element) gez;
                     if(  !(input1.equals("") ) && input2.equals("")  ) {
                         if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1)) {
-                            deniz.append(myElm.getAttribute("Entity_id") );
-                            deniz.append(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
-                            deniz.append( myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                            deniz.append(" " + myElm.getAttribute("Entity_id") );
+                            deniz.append(" " +myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                            deniz.append(" " + myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
                         }
                     }else if(  input1.equals("") && !(input2.equals("") )  ) {
                         if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                            deniz.append( myElm.getAttribute("Entity_id"));
-                            deniz.append( myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
-                            deniz.append( myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                            deniz.append( " " +myElm.getAttribute("Entity_id"));
+                            deniz.append( " " + myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                            deniz.append(" " +  myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
                         }
                     }else if(  !(input1.equals("") ) && !(input2.equals("") )  ) {
                         if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                            deniz.append( myElm.getAttribute("Entity_id"));
-                            deniz.append( myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
-                            deniz.append( myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                            deniz.append(" " + myElm.getAttribute("Entity_id"));
+                            deniz.append(" " + myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                            deniz.append(" " + myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
                         }
                     }else if(input1.equals("") && !(input2.equals(""))) {
                         return "";
