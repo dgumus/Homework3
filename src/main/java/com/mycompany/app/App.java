@@ -33,21 +33,15 @@ public class App {
 
                      if(  !(input1.equals("") ) &&  !(input2.equals("") )  ) {
                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                           deniz.append(" " + id);
-                           deniz.append(" " + name);
-                           deniz.append(" " + surname + "---\n");
+                           deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
                         }
                      }else if( input1.equals("") && !(input2.equals("") )  ) {
                         if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                            deniz.append(" " + id);
-                            deniz.append(" " + name);
-                            deniz.append(" " + surname + "---\n");
+                            deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if( !(input1.equals("") ) && input2.equals("")  ) {
                         if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1)) {
-                            deniz.append(" " + id );
-                            deniz.append(" " + name);
-                            deniz.append(" " + surname + "---\n");
+                            deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if(input1.equals("") && !(input2.equals(""))) {
                         return "";
