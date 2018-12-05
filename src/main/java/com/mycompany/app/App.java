@@ -129,7 +129,7 @@ public class App {
             String input1 = req.queryParams("input1");
             String input2 = req.queryParams("input2");
             
-            ArrayList<String> result= App.search(input1, input2);
+            String result= App.search(input1, input2);
 
             Map map = new HashMap();
             map.put("result", result);
