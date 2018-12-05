@@ -4,8 +4,6 @@ import static spark.Spark.*;
 import spark.ModelAndView;
 import javax.xml.parsers.DocumentBuilder;
 import spark.template.mustache.MustacheTemplateEngine;
-import org.xml.sax.*;
-import java.io.*;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -59,7 +57,7 @@ public class App {
        
         get("/", (req, res) -> "Hello, World");
 
-        post("/compute", (req, res) -> {
+        post("/search", (req, res) -> {
             String input1 = req.queryParams("input1");
             String input2 = req.queryParams("input2");
             
@@ -70,7 +68,7 @@ public class App {
             return new ModelAndView(map, "compute.mustache");
         }, new MustacheTemplateEngine());
 
-        get("/compute", (rq, rs) -> {
+        get("/search", (rq, rs) -> {
             Map map = new HashMap();
             map.put("result", "not computed yet!");
             return new ModelAndView(map, "compute.mustache");
