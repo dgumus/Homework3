@@ -30,17 +30,27 @@ public class App {
                     surname=myElm.getElementsByTagName("LASTNAME").item(0).getTextContent();
 
                      if(  !(input1.equals("") ) &&  !(input2.equals("") )  ) {
-                       if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
+                        String lname= myElm.getElementsByTagName("LASTNAME").item(0).getTextContent();
+                        String fname= myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent();
+                        lname = lname.toLowerCase();
+                        fname = fname.toLowerCase();
+                        input1= input1.toLowerCase();
+                        input2= input2.toLowerCase();
+                       if(fname.contains(input1) && lname.contains(input2)) {
                            deniz.append(id + "\n" + name + "\n" + surname + "\n");
-                        }else if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(input2)) {
-                            deniz.append( id + "\n" + name + "\n" + surname + "\n");
                         }
                      }else if( input1.equals("") && !(input2.equals("") )  ) {
-                        if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2) ||myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(input2)  ) {
+                         String lname= myElm.getElementsByTagName("LASTNAME").item(0).getTextContent();
+                         lname = lname.toLowerCase();
+                         input2= input2.toLowerCase();
+                        if(lname.contains(input2)   ) {
                             deniz.append(id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if( !(input1.equals("") ) && input2.equals("")  ) {
-                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) ||myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(input1)  ) {
+                        String fname= myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent();
+                        fname = fname.toLowerCase();
+                        input1= input1.toLowerCase();
+                        if(fname.contains(input1)   ) {
                             deniz.append(id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if(input1.equals("") && !(input2.equals(""))) {
