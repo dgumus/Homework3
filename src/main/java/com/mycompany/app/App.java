@@ -37,21 +37,21 @@ public class App {
                         input1= input1.toLowerCase();
                         input2= input2.toLowerCase();
                        if(fname.contains(input1) && lname.contains(input2)) {
-                           deniz.append(id + "\n" + name + "\n" + surname + "\n");
+                           deniz.append(id + "\n" + name + "\n" + surname + "\n" + "----------------------------\n");
                         }
                      }else if( input1.equals("") && !(input2.equals("") )  ) {
                          String lname= myElm.getElementsByTagName("LASTNAME").item(0).getTextContent();
                          lname = lname.toLowerCase();
                          input2= input2.toLowerCase();
                         if(lname.contains(input2)   ) {
-                            deniz.append(id + "\n" + name + "\n" + surname + "\n");
+                            deniz.append(id + "\n" + name + "\n" + surname + "\n" + "----------------------------\n");
                         }
                     }else if( !(input1.equals("") ) && input2.equals("")  ) {
                         String fname= myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent();
                         fname = fname.toLowerCase();
                         input1= input1.toLowerCase();
                         if(fname.contains(input1)   ) {
-                            deniz.append(id + "\n" + name + "\n" + surname + "\n");
+                            deniz.append(id + "\n" + name + "\n" + surname + "\n" + "----------------------------\n");
                         }
                     }else if(input1.equals("") && !(input2.equals(""))) {
                         return "";
