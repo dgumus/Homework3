@@ -11,7 +11,6 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 
-
 public class App {
     public static String search(String input1, String input2) {
         StringBuilder deniz  = new StringBuilder();
@@ -26,25 +25,25 @@ public class App {
                 Node gez = nList.item(temp);
                 if (gez.getNodeType() == Node.ELEMENT_NODE) {
                     Element myElm = (Element) gez;
-                    if(  !(input1.equals("") ) && input2.equals("")  ) {
-                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1)) {
-                            deniz.append(" " + myElm.getAttribute("Id") );
-                            deniz.append(" " +myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
-                            deniz.append(" " + myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
+                     if(  !(input1.equals("") ) || !(input2.equals("") )  ) {
+                       if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) || myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
+                           deniz.append(" " + myElm.getAttribute("Id"));
+                           deniz.append(" " + myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                           deniz.append(" " + myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
                         }
-                    }else if(  input1.equals("") && !(input2.equals("") )  ) {
+                     }/*else if( input1.equals("") && !(input2.equals("") )  ) {
                         if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
                             deniz.append( " " +myElm.getAttribute("Id"));
                             deniz.append( " " + myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
                             deniz.append(" " +  myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
                         }
-                    }else if(  !(input1.equals("") ) && !(input2.equals("") )  ) {
-                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                            deniz.append(" " + myElm.getAttribute("Id"));
-                            deniz.append(" " + myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
+                    }else if( !(input1.equals("") ) && input2.equals("")  ) {
+                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1)) {
+                            deniz.append(" " + myElm.getAttribute("Id") );
+                            deniz.append(" " +myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent());
                             deniz.append(" " + myElm.getElementsByTagName("LASTNAME").item(0).getTextContent());
-                        }
-                    }else if(input1.equals("") && !(input2.equals(""))) {
+                        }*/
+                    else if(input1.equals("") && (input2.equals(""))) {
                         return "";
                     }
                 }
