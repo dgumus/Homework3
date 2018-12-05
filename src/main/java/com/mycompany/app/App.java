@@ -31,15 +31,17 @@ public class App {
 
                      if(  !(input1.equals("") ) &&  !(input2.equals("") )  ) {
                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                           deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
+                           deniz.append(id + "\n" + name + "\n" + surname + "\n");
+                        }else if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(input1) && myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(input2)) {
+                            deniz.append( id + "\n" + name + "\n" + surname + "\n");
                         }
                      }else if( input1.equals("") && !(input2.equals("") )  ) {
-                        if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2)) {
-                            deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
+                        if(myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().contains(input2) ||myElm.getElementsByTagName("LASTNAME").item(0).getTextContent().equalsIgnoreCase(input2)  ) {
+                            deniz.append(id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if( !(input1.equals("") ) && input2.equals("")  ) {
-                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1)) {
-                            deniz.append(" " + id + "\n" + name + "\n" + surname + "\n");
+                        if(myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().contains(input1) ||myElm.getElementsByTagName("FIRSTNAME").item(0).getTextContent().equalsIgnoreCase(input1)  ) {
+                            deniz.append(id + "\n" + name + "\n" + surname + "\n");
                         }
                     }else if(input1.equals("") && !(input2.equals(""))) {
                         return "";
@@ -62,6 +64,7 @@ public class App {
             String input2 = req.queryParams("input2");
             
             String result= App.search(input1, input2);
+
 
             Map map = new HashMap();
             map.put("result", result);
